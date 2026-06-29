@@ -20,28 +20,6 @@
 
 ---
 
-## Demo · 演示
-
-**Selling a real product, end to end.** Pagewright read the live North Face
-[*1996 Retro Nuptse Jacket*](https://www.thenorthface.com/en-us/p/mens/mens-jackets-and-vests/mens-insulated-and-down-300771/mens-1996-retro-nuptse-jacket-NF0A3C8D)
-page — which is Akamai bot-protected, so `curl` is blocked and it's fetched through a **real
-browser (tier-3)** — pulled the real price, 700-fill down spec, six colorways, sizes and the
-official benefit ratings + description, then rendered this **bilingual 详情页**.
-
-> Pagewright 读取了 North Face《1996 Retro Nuptse》线上商品页（站点有 Akamai 反爬，`curl` 被挡 →
-> 经**真实浏览器（tier-3）**抓取），取到真实价格、700 蓬松鹅绒、6 配色、尺码与官方性能标签及文案，
-> 渲染出这张**中英对照详情页**。
-
-<p align="center"><img src="docs/demo_nuptse.png" width="460" alt="North Face 1996 Retro Nuptse — generated bilingual detail page"/></p>
-
-<sub>Real copy & data shown above. **Product photos are fetched at run time and are NOT committed
-to this repo** (© The North Face) — the engine renders text/monogram fallbacks where an image is
-absent. Reproduce it from [`examples/north_face_nuptse`](examples/north_face_nuptse) (add the
-photos per its `ASSETS.md`). Other bundled example: [`examples/sa_infinity`](examples/sa_infinity).
-此图仅含真实文案与数据；产品实拍图在运行时抓取、不随仓库分发（版权归 The North Face）。</sub>
-
----
-
 ## English
 
 Give Pagewright a **product URL** or your **own images + a description**, and it produces a
