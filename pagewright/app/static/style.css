@@ -297,3 +297,5 @@ input::placeholder,textarea::placeholder{color:var(--faint)}
 .cmp-h span{font-size:11.5px;color:var(--muted)}
 .cmp-scroll{flex:1;overflow:auto;padding:20px;display:flex;justify-content:center}
 .cmp-scroll img{width:100%;max-width:380px;align-self:flex-start;border-radius:5px;box-shadow:var(--sh-2)}
+
+.tcard .ic .mono{font:800 26px/1 var(--font-latin);color:var(--line2)}

@@ -11,7 +11,7 @@
     <div class="tgrid">
       {% for f in g.feats %}
       <div class="tcard">
-        <div class="ic{% if not has_asset(f.icon) %} noimg{% endif %}">{% if has_asset(f.icon) %}<img src="{{ asset_url(f.icon) }}" alt="{{ f.name }}">{% else %}{{ f.name }}{% endif %}</div>
+        <div class="ic{% if not has_asset(f.icon) %} noimg{% endif %}">{% if has_asset(f.icon) %}<img src="{{ asset_url(f.icon) }}" alt="{{ f.name }}">{% else %}<span class="mono">{{ f.name[0]|upper }}</span>{% endif %}</div>
         <div class="tx">
           <div class="tcn">{{ m.main(f.name, f.name_secondary) }}</div>
           {% if m.has_sub(f.name, f.name_secondary) %}<div class="ten en">{{ m.sub(f.name, f.name_secondary) }}</div>{% endif %}

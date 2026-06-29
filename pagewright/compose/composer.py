@@ -96,15 +96,19 @@ def _make_env(assets_dir: Path) -> Environment:
 import re as _re
 from markupsafe import Markup, escape as _escape
 
+# Allowed inline tags, each with an OPTIONAL safe class attr (single/double quoted, after
+# escaping the quotes become &#34;/&#39;). The class value is restricted to word/space/hyphen,
+# so no quotes/brackets can break out — no <script>, no event handlers, no href/style.
 _ALLOWED_TAGS = _re.compile(
-    r'&lt;/?(?:b|i|br|sub|sup|em|strong)\s*/?&gt;'        # simple inline tags
-    r'|&lt;span(?:\s+class=&#34;[\w \-]{0,40}&#34;)?&gt;'  # <span class="...">
-    r'|&lt;/span&gt;'
+    r"&lt;/?(?:b|i|em|strong|sub|sup|span)"
+    r"(?:\s+class=(?:&#34;|&#39;)[\w \-]{0,40}(?:&#34;|&#39;))?\s*&gt;"
+    r"|&lt;br\s*/?&gt;"
 )
 
 
 def _restore(m):
-    return (m.group(0).replace("&lt;", "<").replace("&gt;", ">").replace("&#34;", '"'))
+    return (m.group(0).replace("&lt;", "<").replace("&gt;", ">")
+            .replace("&#34;", '"').replace("&#39;", "'"))
 
 
 def safe_inline(value) -> Markup:

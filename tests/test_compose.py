@@ -37,6 +37,18 @@ def test_compose_resolves_assets_to_real_files():
     assert len(existing) >= 30  # 37 assets total, all copied into the example
 
 
+def test_safe_inline_keeps_formatting_blocks_injection():
+    from pagewright.compose.composer import safe_inline
+
+    ok = str(safe_inline("a <b class='hl'>x</b> <span class=\"sub\">30ft</span> <i>y</i><br>"))
+    assert "<b class='hl'>x</b>" in ok and '<span class="sub">30ft</span>' in ok and "<i>y</i>" in ok
+
+    bad = str(safe_inline('<b>x</b><script>steal()</script><b onclick="e">z</b>'))
+    assert "<b>x</b>" in bad
+    assert "<script>" not in bad and "&lt;script&gt;" in bad      # script escaped to inert text
+    assert "<b onclick" not in bad                                # event-handler tag escaped
+
+
 def test_single_product_minimal_spec_composes():
     """A bare single-product spec (no variants/comparison) still renders."""
     from pagewright.spec import Product, ProductSpec
