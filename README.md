@@ -34,11 +34,11 @@ official benefit ratings + description, then rendered this **bilingual 详情页
 
 <p align="center"><img src="docs/demo_nuptse.png" width="460" alt="North Face 1996 Retro Nuptse — generated bilingual detail page"/></p>
 
-<sub>Real copy & data shown above. **Product photos are fetched at run time and are NOT committed
-to this repo** (© The North Face) — the engine renders text/monogram fallbacks where an image is
-absent. Reproduce it from [`examples/north_face_nuptse`](examples/north_face_nuptse) (add the
-photos per its `ASSETS.md`). Other bundled example: [`examples/sa_infinity`](examples/sa_infinity).
-此图仅含真实文案与数据；产品实拍图在运行时抓取、不随仓库分发（版权归 The North Face）。</sub>
+<sub>Real copy, specs & pricing shown above; the **product photos are heavily mosaicked** here to
+avoid redistributing © The North Face imagery — at run time Pagewright fetches the real photos.
+Reproduce from [`examples/north_face_nuptse`](examples/north_face_nuptse) (add photos per its
+`ASSETS.md`). Other bundled example: [`examples/sa_infinity`](examples/sa_infinity).
+图中文案与数据均为真实信息；产品图已打码处理以规避版权（版权归 The North Face），实拍图在运行时抓取。</sub>
 
 ---
 
