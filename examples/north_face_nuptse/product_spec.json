@@ -1,0 +1,97 @@
+{
+  "meta": {
+    "source_urls": ["https://www.thenorthface.com/en-us/p/mens/mens-jackets-and-vests/mens-insulated-and-down-300771/mens-1996-retro-nuptse-jacket-NF0A3C8D"],
+    "captured_at": "2026-06-29",
+    "language": { "primary": "en", "secondary": "zh-CN" },
+    "brand": {
+      "name": "THE NORTH FACE", "abbr": "TNF", "since": "1968",
+      "origin": "California · U.S.A.", "tagline": "NEVER STOP EXPLORING"
+    }
+  },
+  "product": {
+    "name": "1996 Retro Nuptse Jacket",
+    "family": "1996 RETRO NUPTSE",
+    "family_secondary": "1996 复古 Nuptse 羽绒服",
+    "category": "Men's Insulated Down · 男款经典羽绒服",
+    "price": "$380",
+    "tagline": "WE DIDN'T JUST MAKE A PUFFER. WE MADE THE NUPTSE.",
+    "tagline_secondary": "不只是羽绒服，是 Nuptse",
+    "summary_secondary": "我们没有只是做一件羽绒服——我们做的是 Nuptse。它生于严酷的高山攀登，又在城市街头封神，历经数代依旧硬核。标志性的超大充绒格室廓形，配 700 蓬松度鹅绒，几十年来始终是全球潮流符号。随性却可收纳，防护又松弛——这，就是 icon。",
+    "cta_secondary": "立即选购 · 六色可选"
+  },
+  "hero_stats": [
+    { "k": "$380", "v": "PRICE 参考价" },
+    { "k": "700-FILL", "v": "DOWN 蓬松度鹅绒" },
+    { "k": "96%", "v": "RECOMMENDED · 2798 评价" },
+    { "k": "XXS–3XL", "v": "SIZE 尺码" }
+  ],
+  "leads": {
+    "highlights": { "eyebrow": "Heritage", "title_secondary": "为什么它是 icon", "subtitle": "An Icon, For Decades",
+      "text": "Mountaineering roots, street legend.",
+      "text_secondary": "三个理由让它经久不衰：<b class='hl'>标志廓形</b>一眼认出、<b class='hl'>700 鹅绒</b>极致保暖、<b class='hl'>可收纳</b>随行随走。" },
+    "features": { "eyebrow": "Performance", "title_secondary": "性能与科技", "subtitle": "Built to Perform",
+      "text": "The North Face benefit ratings.",
+      "text_secondary": "官方性能标签：每一项都为「真能扛事」服务。" },
+    "attributes": { "eyebrow": "Options", "title_secondary": "配色 · 尺码 · 版型", "subtitle": "Color · Size · Fit · Style" },
+    "variants": { "eyebrow": "Closer Look", "title_secondary": "三大看点", "subtitle": "Front · Detail · Back" }
+  },
+  "highlights": [
+    { "key": "Silhouette 廓形", "name": "标志性超大充绒格室",
+      "desc": "Unmistakable oversized baffles.", "desc_secondary": "超大充绒格室 + 黑色拼色育克，几十年不变的街头辨识度。" },
+    { "key": "Warmth 保暖", "name": "700 蓬松度鹅绒",
+      "desc": "Ultra-warm 700-fill down.", "desc_secondary": "700 蓬松度鹅绒填充，轻盈蓬松，严寒中持久锁温。" },
+    { "key": "Versatile 百搭", "name": "随性 · 可收纳",
+      "desc": "Relaxed but packable; protective but chill.", "desc_secondary": "松弛随性又防护到位，整件可压缩收纳，通勤旅行随手带走。" }
+  ],
+  "features": [
+    { "id": "down", "group": "Benefit Ratings", "group_secondary": "官方性能标签",
+      "name": "Down Fill", "name_secondary": "鹅绒填充",
+      "desc": "Lofty down maintains warmth in cold.", "desc_secondary": "蓬松鹅绒填充，严寒条件下持久维持暖意。" },
+    { "id": "packable", "group": "Benefit Ratings", "group_secondary": "官方性能标签",
+      "name": "Packable", "name_secondary": "可收纳",
+      "desc": "Highly compressible.", "desc_secondary": "高度可压缩，能整件塞进自身口袋。" },
+    { "id": "breathable", "group": "Benefit Ratings", "group_secondary": "官方性能标签",
+      "name": "Breathable", "name_secondary": "透气",
+      "desc": "Lets air & moisture vapor pass to regulate temp.", "desc_secondary": "面料允许空气与水汽透出，帮助调节体温。" },
+    { "id": "dwr", "group": "Benefit Ratings", "group_secondary": "官方性能标签",
+      "name": "DWR Water-repellent", "name_secondary": "DWR 防泼水",
+      "desc": "Durable finish; water beads off the surface.", "desc_secondary": "耐久拒水处理，水珠在表面滚落，不易浸湿。" },
+    { "id": "recycled", "group": "Benefit Ratings", "group_secondary": "官方性能标签",
+      "name": "Recycled Material", "name_secondary": "再生材料",
+      "desc": "Recycled content reduces landfill & virgin use.", "desc_secondary": "含再生成分，减少填埋废弃与原生材料消耗。" }
+  ],
+  "attributes": [
+    { "group": "Color", "group_secondary": "配色", "note": "6 色可选", "values": [
+      { "name": "Lava Red", "name_secondary": "熔岩红" }, { "name": "TNF Black", "name_secondary": "黑" },
+      { "name": "Summit Navy", "name_secondary": "峰顶藏青" }, { "name": "Smoked Pearl", "name_secondary": "烟珍珠灰" },
+      { "name": "Ember Soil", "name_secondary": "余烬棕" }, { "name": "Woodland Green", "name_secondary": "林地绿" } ] },
+    { "group": "Size", "group_secondary": "尺码", "values": [
+      { "name": "XXS" }, { "name": "XS" }, { "name": "S" }, { "name": "M" },
+      { "name": "L" }, { "name": "XL" }, { "name": "XXL" }, { "name": "3XL" } ] },
+    { "group": "Fit", "group_secondary": "版型", "values": [
+      { "name": "Standard", "name_secondary": "标准" }, { "name": "Big", "name_secondary": "加大" } ] },
+    { "group": "Style", "group_secondary": "款式", "values": [
+      { "name": "Jacket", "name_secondary": "夹克" }, { "name": "Vest", "name_secondary": "马甲" } ] }
+  ],
+  "variants": [
+    { "id": "front", "name": "正面 · 标志廓形", "short": "正面", "category": "Front View",
+      "positioning": "街头辨识度", "image": { "asset": "assets/products/hero.png" },
+      "desc_secondary": "经典超大充绒格室廓形 + 黑色拼色育克，一眼认出的 Nuptse。图为 Lava Red 熔岩红配色。" },
+    { "id": "detail", "name": "细节 · 700 鹅绒", "short": "细节", "category": "Detail",
+      "positioning": "极致保暖", "image": { "asset": "assets/products/alt.png" },
+      "desc_secondary": "700 蓬松度鹅绒填充，轻盈蓬松；袖口与下摆收口防风，胸前 700 标识。" },
+    { "id": "back", "name": "背面 · 可收纳", "short": "背面", "category": "Back View", "flagship": true,
+      "positioning": "便携出行", "image": { "asset": "assets/products/back.png" },
+      "desc_secondary": "利落版型、背部大 logo；整件可压缩收纳进口袋，通勤旅行随手带走。" }
+  ],
+  "guidance": [
+    { "q": "想要最经典", "a": "选 <b>Lava Red 熔岩红</b>或 <b>TNF Black 黑</b>，复刻初代气质。", "highlight": true },
+    { "q": "低调百搭", "a": "选 <b>Summit Navy 峰顶藏青</b>或 <b>Smoked Pearl 烟珍珠灰</b>。" },
+    { "q": "单穿当外套", "a": "选 <b>标准版型 (Standard)</b> 拿本码即可。" },
+    { "q": "内搭厚卫衣", "a": "可选 <b>加大版型 (Big)</b> 或上调一码。" },
+    { "q": "身材参考", "a": "模特身高约 180cm 穿 <b>M 码</b>（官方：5ft 11in / 胸围 30in）。" }
+  ],
+  "citations": [
+    { "claim": "Price, 700-fill down, benefits, colors, sizes, description", "source_url": "https://www.thenorthface.com/en-us/p/mens/mens-jackets-and-vests/mens-insulated-and-down-300771/mens-1996-retro-nuptse-jacket-NF0A3C8D" }
+  ]
+}
