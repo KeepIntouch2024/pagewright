@@ -53,14 +53,61 @@ acquire ─▶ extract ─▶ enrich ─▶ compose ─▶ render ─▶ verify
  (URL)      (LLM)    (optional)  (HTML)    (PNG)    (LLM QA)
 ```
 
-### The one idea that matters
-**The LLM understands, writes, translates and lays out — it never generates factual pixels.**
-Icons, product photos and spec numbers are *real files* referenced in HTML and rendered
-deterministically by a headless browser. (The project this grew from first tried full
-AI-image-generation; it hallucinated the technology icons. Switching to *"LLM authors a data
-spec → real assets → HTML → screenshot"* made it pixel-accurate and **verifiable**.) Everything
-flows through one contract, [`ProductSpec`](pagewright/spec.py), so any input source and any
-template plug together.
+### Why HTML rendering, not text-to-image
+
+An e-commerce detail page lives or dies on **data fidelity** — the price, the spec numbers, the
+brand logo and the size chart have to be *exactly right*. Today's text-to-image / 文生图 models
+(Stable Diffusion, DALL·E, Midjourney, Flux, Nano-Banana…) are the **wrong tool** for that job:
+
+- **Text comes out garbled.** Generated images mangle words and digits — `$159` turns into `$IS9`,
+  Chinese characters melt into glyph soup. You can't ship a price you can't trust.
+- **Logos & icons hallucinate.** The model paints a plausible-but-wrong brand mark or tech icon.
+  *(This project's predecessor learned it the hard way: AI-drawn icons that didn't match the brand —
+  which is exactly why Pagewright exists.)*
+- **Not editable, not reproducible.** Change one price and you re-roll the entire image and pray —
+  no source of truth, no diff, no versioning, and every regenerate costs a full image generation.
+
+**Pagewright takes the opposite path: the LLM never paints pixels.** It does what language models
+are genuinely good at — read, structure, write, translate, lay out — and hands rendering to a
+deterministic engine. The technical path:
+
+```
+   LLM (understand + write + translate)        deterministic, no model
+ ┌───────────────────────────────────┐   ┌──────────────────────────────────┐
+ page / uploads ─▶ ProductSpec (JSON) ─▶ HTML (Jinja2 + real assets) ─▶ headless screenshot ─▶ PNG
+                    ▲ schema-validated      ▲ crisp vector text,            ▲ what you see =
+                    + source citations        exact numbers, real logo        what the data says
+```
+
+1. **Extract → structured data.** The LLM reads the page (or your uploads) and emits a typed,
+   schema-validated [`ProductSpec`](pagewright/spec.py) — every fact captured, with source citations.
+2. **Real assets, never generated.** Icons and product photos are *real files*; the LLM **matches**
+   them, it does not draw. A missing asset becomes a clean text/monogram fallback — never a fake.
+3. **Compose → HTML.** The spec fills a Jinja2 template: crisp vector text, exact digits, your real
+   logo, pixel-perfect tables — bilingual (中英对照) by construction.
+4. **Render → PNG.** A headless browser screenshots the HTML, then auto-crops and slices it into
+   upload-ready panels. Deterministic: the same spec always yields the same image.
+5. **Verify.** A multi-lens LLM pass + deterministic integrity checks confirm every number and asset
+   on the page traces back to the spec — and that injected page text can't execute.
+
+The payoff: **text is always sharp, numbers are always exact, the logo is always the real one, and
+any field is a one-line edit + instant re-render away** (re-rendering needs *no model at all*).
+
+#### Pagewright vs. text-to-image (文生图)
+
+| | Text-to-image | **Pagewright (LLM → HTML → PNG)** |
+|---|---|---|
+| Price / spec numbers | often wrong or distorted | **exact** — it's literal text |
+| Chinese / small text | melts, garbles | **crisp vector text at any size** |
+| Brand logo & icons | hallucinated | **your real asset files** |
+| Edit one field | re-roll the whole image | **one-line edit, re-render** |
+| Reproducible & versioned | no | **yes — the spec is the source of truth** |
+| Long detail page (10000px+) | impractical | **native — auto-sliced into panels** |
+| Auditable / trustworthy | no | **yes — citations + verify pass** |
+| Cost to regenerate | a full image generation | **≈ free — compose + render, no model** |
+
+Everything flows through the single [`ProductSpec`](pagewright/spec.py) contract, so any input
+source and any template plug together without knowing about each other.
 
 ### Two ways to use it
 
@@ -175,11 +222,57 @@ AI 凭空画图**。
 (URL)  (大模型) (可选)  (HTML)  (PNG)  (大模型质检)
 ```
 
-### 最核心的一个理念
-**大模型只负责理解、文案、翻译与排版；绝不生成"事实像素"。** 图标、产品图、规格数字一律是*真实文件*，
-写进 HTML 由无头浏览器确定性渲染。（本项目脱胎的那个需求，最初用整图 AI 生成，结果把科技图标画错了；
-改成 *"大模型产出数据规格 → 真实素材 → HTML → 截图"* 后，既像素精准又**可核验**。）所有环节只通过一个
-契约 [`ProductSpec`](pagewright/spec.py) 衔接，因此任意来源、任意模板都能自由拼装。
+### 为什么用 HTML 渲染，而不是文生图
+
+电商详情页的命脉是**数据真实性**——价格、规格数字、品牌 logo、尺码表必须**分毫不差**。而当下的
+文生图模型（Stable Diffusion、DALL·E、Midjourney、Flux、Nano-Banana 等）恰恰**不适合**干这件事：
+
+- **文字会扭曲乱码。** 生成图里的文字和数字经常糊掉——`￥159` 变成 `￥IS9`，汉字糊成"字形汤"。
+  一个你都不敢信的价格，根本没法上架。
+- **logo 和图标会幻觉。** 模型会画出"看起来对、其实是错"的品牌标志或科技图标。
+  *（本项目的前身就栽在这上面：AI 画的图标和官方对不上——这正是 Pagewright 诞生的原因。）*
+- **不可编辑、不可复现。** 改一个价格就得整张图重抽一遍、还得碰运气；没有唯一数据源、没有 diff、
+  没有版本管理，而且每次重生成都要烧一次完整出图。
+
+**Pagewright 走相反的路：大模型绝不画像素。** 让大模型只做它真正擅长的事——读取、结构化、文案、
+翻译、排版——把"出图"交给确定性引擎。技术路径如下：
+
+```
+   大模型（理解 + 文案 + 翻译）              确定性、不用模型
+ ┌──────────────────────────────┐   ┌──────────────────────────────────┐
+ 页面/上传 ─▶ ProductSpec（JSON） ─▶ HTML（Jinja2 + 真实素材） ─▶ 无头浏览器截图 ─▶ PNG
+              ▲ schema 校验            ▲ 矢量清晰文字、              ▲ 所见即数据
+              + 出处引用                 精确数字、真实 logo
+```
+
+1. **抽取 → 结构化数据。** 大模型读页面（或你的上传）产出带类型、schema 校验的
+   [`ProductSpec`](pagewright/spec.py)——每条事实都被记录，并附出处引用。
+2. **真实素材、绝不生成。** 图标与产品图都是*真实文件*；大模型只**匹配**、不**绘制**；缺图就退化为
+   干净的文字/字母占位，绝不造假图。
+3. **合成 → HTML。** 用 spec 填 Jinja2 模板：矢量清晰文字、精确数字、你的真实 logo、像素级表格，
+   天生**中英对照**。
+4. **渲染 → PNG。** 无头浏览器对 HTML 截图，再自动裁白、切成可上传的分段。确定性：同一 spec 永远
+   得到同一张图。
+5. **校验。** 多镜头大模型审校 + 确定性完整性检查，确认页面上每个数字/素材都能追溯回 spec，且页面里
+   被注入的文本无法执行。
+
+收益：**文字永远清晰、数字永远精确、logo 永远是真的；任何字段都是"改一行 + 秒级重渲染"**
+（重渲染**完全不用模型**）。
+
+#### Pagewright 与文生图对比
+
+| | 文生图 | **Pagewright（大模型 → HTML → PNG）** |
+|---|---|---|
+| 价格 / 规格数字 | 经常出错或扭曲 | **精确**——本就是文字 |
+| 中文 / 小字 | 糊掉、乱码 | **任意字号矢量清晰** |
+| 品牌 logo 与图标 | 幻觉乱画 | **你的真实素材文件** |
+| 改一个字段 | 整张图重抽 | **改一行、重渲染** |
+| 可复现 / 可版本化 | 否 | **是——spec 即唯一数据源** |
+| 超长详情页（10000px+） | 几乎做不到 | **原生支持——自动切片分段** |
+| 可审计 / 可信 | 否 | **是——出处引用 + 校验环节** |
+| 重生成成本 | 一次完整出图 | **≈ 免费——合成+渲染，不用模型** |
+
+所有环节只通过一个 [`ProductSpec`](pagewright/spec.py) 契约衔接，因此任意来源、任意模板都能自由拼装。
 
 ### 两种用法
 
