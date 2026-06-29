@@ -130,6 +130,53 @@ def create_app():
             return JSONResponse({"error": "no such file"}, status_code=404)
         return FileResponse(str(out))
 
+    # ── Generation library (persistent history / versions) ──────────────────────────
+    @app.get("/api/library")
+    def library_list():
+        from .. import library
+
+        return {"groups": library.grouped()}
+
+    @app.get("/api/library/{entry_id}/file/{name}")
+    def library_file(entry_id: str, name: str):
+        from .. import library
+
+        p = library.file_path(entry_id, name)
+        if not p:
+            return JSONResponse({"error": "no such file"}, status_code=404)
+        return FileResponse(str(p))
+
+    @app.delete("/api/library/{entry_id}")
+    def library_delete(entry_id: str):
+        from .. import library
+
+        return {"deleted": library.delete(entry_id)}
+
+    @app.post("/api/library/{entry_id}/regenerate")
+    def library_regenerate(entry_id: str, payload: dict | None = None):
+        """Re-render a stored spec into a NEW version (no LLM needed — pure compose+render).
+        Optional payload {theme}."""
+        from .. import library
+        from ..compose.composer import compose_to_file
+        from ..render.renderer import render
+        from ..spec import load_spec
+
+        meta = library.get(entry_id)
+        if not meta:
+            return JSONResponse({"error": "unknown entry"}, status_code=404)
+        edir = library.entry_dir(entry_id)
+        theme = (payload or {}).get("theme") or meta.get("theme") or "editorial"
+        settings = settings_store.to_settings()
+        work = Path(tempfile.mkdtemp(prefix="pw_regen_"))
+        html = str(work / "page.html")
+        compose_to_file(load_spec(str(edir / "spec.json")), html,
+                        assets_dir=str(edir), theme_path=_theme_path(theme))
+        render(html, str(work / "output"), width=settings.width, scale=settings.scale,
+               cap=settings.max_screenshot_px, make_panels=True)
+        new_meta = library.archive(str(work / "output"), load_spec(str(edir / "spec.json")),
+                                   mode="regenerate", theme=theme, target_lang=meta.get("target_lang"))
+        return {"entry": new_meta}
+
     app.mount("/", StaticFiles(directory=str(_STATIC), html=True), name="static")
     return app
 
@@ -185,8 +232,16 @@ def _run_job(job_id: str, mode: str, work: str, url: Optional[str],
                      scale=settings.scale, cap=settings.max_screenshot_px, make_panels=True)
 
         panels = [Path(p).name for p in res["panels"]]
+        # archive into the persistent library (history / versions)
+        from .. import library
+
+        entry = library.archive(
+            os.path.join(work, "output"), spec, mode=mode, source_url=url or None,
+            target_lang=target_lang, theme=theme,
+            model=(settings.default_model() if settings.llm else None),
+        )
         job["result"] = {"full": "full.png", "panels": panels, "size": res["size"],
-                         "spec": "spec.json"}
+                         "spec": "spec.json", "entry_id": entry["id"], "version": entry["version"]}
         job["status"] = "done"
         _progress(job_id, "done")
     except Exception as e:

@@ -66,6 +66,13 @@ pagewright run --manual examples/manual_demo --target-lang zh-CN --out /tmp/demo
 pagewright run "https://store.example.com/p/widget" --target-lang zh-CN --out /tmp/widget
 ```
 
+### Generation library — every result is kept
+Every generation is auto-saved to a local library at `~/.pagewright/library/` (self-contained:
+full image, panels, the `ProductSpec`, and a thumbnail). The desktop app's **History** panel
+browses them grouped by product with version badges (v1, v2…) — view, download, **re-render** an
+old spec into a new version, or delete. CLI: `pagewright library list|open|path|rm`. Nothing
+leaves your machine.
+
 ### How acquisition covers *most* sites — the layered fetcher
 No per-site parsers. A layered fallback fetcher auto-escalates; whatever tier wins, the captured
 **text + screenshots** go to the LLM, which returns a schema-valid `ProductSpec`:
@@ -176,6 +183,11 @@ pagewright run --manual examples/manual_demo --target-lang zh-CN --out /tmp/demo
 # 从商品链接：
 pagewright run "https://store.example.com/p/widget" --target-lang zh-CN --out /tmp/widget
 ```
+
+### 作品库 —— 每次生成都留底
+每次生成都会自动存到本地作品库 `~/.pagewright/library/`（自包含：长图、分段、`ProductSpec`、缩略图）。
+桌面 App 的**历史**面板按商品分组浏览，带版本徽章（v1、v2…）——可查看、下载、把旧版 spec **重渲染**为
+新版本、或删除。命令行：`pagewright library list|open|path|rm`。全程不出本机。
 
 ### 采集如何覆盖"绝大多数"站点 —— 分层兜底抓取
 不写逐站解析器。分层抓取器自动逐级升级；无论哪一级抓到，都把**正文 + 截图**交给大模型，产出

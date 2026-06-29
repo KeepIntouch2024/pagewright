@@ -41,6 +41,11 @@ const I18N = {
     "p.fetch": "正在抓取页面…", "p.read": "正在用模型读取内容…", "p.translate": "正在翻译…",
     "p.compose": "正在排版…", "p.render": "正在渲染长图…", "p.done": "完成",
     "count.suffix": " 字",
+    history: "历史",
+    "lib.title": "作品库 · 历史版本", "lib.empty": "还没有作品。生成一张详情页，它会自动存到这里。",
+    "lib.view": "查看", "lib.download": "下载", "lib.regen": "重渲染", "lib.delete": "删除",
+    "lib.confirmDel": "确定删除这个版本？", "lib.regenDone": "已重渲染为新版本",
+    "lib.deleted": "已删除", "lib.versions": "个版本",
   },
   "en": {
     _name: "English", _other: "中", _html: "en",
@@ -78,6 +83,11 @@ const I18N = {
     "p.fetch": "Fetching the page…", "p.read": "Reading content with the model…", "p.translate": "Translating…",
     "p.compose": "Laying out…", "p.render": "Rendering the long image…", "p.done": "Done",
     "count.suffix": " chars",
+    history: "History",
+    "lib.title": "Library · version history", "lib.empty": "No work yet. Generate a page and it's saved here automatically.",
+    "lib.view": "View", "lib.download": "Download", "lib.regen": "Re-render", "lib.delete": "Delete",
+    "lib.confirmDel": "Delete this version?", "lib.regenDone": "Re-rendered as a new version",
+    "lib.deleted": "Deleted", "lib.versions": "versions",
   },
 };
 

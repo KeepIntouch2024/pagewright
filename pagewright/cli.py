@@ -67,6 +67,66 @@ def app():
     _desktop()
 
 
+@main.group()
+def library():
+    """Browse the generation library (history / versions) at ~/.pagewright/library."""
+
+
+@library.command("list")
+def library_list():
+    """List archived generations (newest first)."""
+    from . import library as lib
+
+    entries = lib.list_entries()
+    if not entries:
+        console.print("[dim]library is empty[/]")
+        return
+    from rich.table import Table
+
+    t = Table(show_header=True, header_style="bold")
+    for col in ("ID", "PROJECT", "VER", "TITLE", "CREATED", "SIZE"):
+        t.add_column(col)
+    for m in entries:
+        sz = "×".join(map(str, m["full_size"])) if m.get("full_size") else "—"
+        t.add_row(m["id"], m["project"], f"v{m['version']}", (m.get("title") or "")[:30],
+                  m.get("created_at", "")[:19], sz)
+    console.print(t)
+
+
+@library.command("open")
+@click.argument("entry_id")
+def library_open(entry_id):
+    """Open an entry's full image in the default viewer."""
+    import subprocess
+    import sys
+
+    from . import library as lib
+
+    p = lib.file_path(entry_id, "full.png")
+    if not p:
+        raise click.ClickException(f"no full.png for {entry_id}")
+    opener = "open" if sys.platform == "darwin" else ("start" if os.name == "nt" else "xdg-open")
+    subprocess.run([opener, str(p)])
+
+
+@library.command("path")
+@click.argument("entry_id")
+def library_path(entry_id):
+    """Print an entry's folder path."""
+    from . import library as lib
+
+    console.print(str(lib.entry_dir(entry_id)))
+
+
+@library.command("rm")
+@click.argument("entry_id")
+def library_rm(entry_id):
+    """Delete an entry."""
+    from . import library as lib
+
+    console.print("[green]deleted[/]" if lib.delete(entry_id) else "[red]not found[/]")
+
+
 @main.command()
 @click.argument("url")
 @click.option("-o", "--out", "out_dir", default="work", help="Output dir for raw capture.")
@@ -196,11 +256,12 @@ def verify(out_dir, spec_path, report, llm, model):
 @click.option("--icon-dir", default=None, help="Real icon library for feature matching.")
 @click.option("--assets-dir", default=None)
 @click.option("--no-enrich", is_flag=True, help="Skip the enrich stage.")
+@click.option("--no-archive", is_flag=True, help="Don't save to the generation library.")
 @click.option("--no-verify", is_flag=True)
 @_llm_opts
 @click.pass_context
 def run(ctx, source, spec_path, manual_dir, out_dir, theme, lang, target_lang, icon_dir,
-        assets_dir, no_enrich, no_verify, llm, model):
+        assets_dir, no_enrich, no_archive, no_verify, llm, model):
     """End-to-end: (acquire→extract | manual | --spec) → enrich → compose → render → verify."""
     os.makedirs(out_dir, exist_ok=True)
     generated = not spec_path  # only enrich specs we just extracted, not user-supplied ones
@@ -223,6 +284,12 @@ def run(ctx, source, spec_path, manual_dir, out_dir, theme, lang, target_lang, i
     ctx.invoke(compose, spec_path=spec_path, out_html=html, theme=theme, assets_dir=assets_dir)
     ctx.invoke(render, html_path=html, out_dir=os.path.join(out_dir, "output"),
                width=None, scale=None, no_panels=False, engine="auto")
+    if not no_archive:
+        from . import library
+
+        entry = library.archive(os.path.join(out_dir, "output"), load_spec(spec_path),
+                                mode="cli", theme=theme, target_lang=target_lang)
+        console.print(f"[dim]archived to library:[/] {entry['id']} (v{entry['version']})")
     if not no_verify:
         try:
             ctx.invoke(verify, out_dir=os.path.join(out_dir, "output"), spec_path=spec_path,

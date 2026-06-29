@@ -206,7 +206,73 @@ function showResult(id, r) {
   showState("result");
 }
 
+/* ───────── library / history ───────── */
+async function openLibrary() {
+  $("#library").classList.remove("hidden");
+  await refreshLibrary();
+}
+function closeLibrary() { $("#library").classList.add("hidden"); }
+
+async function refreshLibrary() {
+  const body = $("#libBody");
+  let data;
+  try { data = await (await fetch("/api/library")).json(); } catch { return; }
+  const groups = data.groups || [];
+  if (!groups.length) { body.innerHTML = `<div class="lib-empty">${t("lib.empty")}</div>`; return; }
+  body.innerHTML = "";
+  for (const g of groups) {
+    const sec = document.createElement("div");
+    sec.className = "lib-group";
+    const title = g.entries[0]?.title_secondary && LANG === "zh-CN" ? g.entries[0].title_secondary : g.title;
+    sec.innerHTML = `<div class="lib-group-h"><span class="lib-proj">${escapeHtml(title)}</span>
+      <span class="lib-count">${g.entries.length} ${t("lib.versions")}</span></div>`;
+    const grid = document.createElement("div"); grid.className = "lib-grid";
+    g.entries.forEach((m) => grid.appendChild(libCard(m)));
+    sec.appendChild(grid); body.appendChild(sec);
+  }
+}
+
+function libCard(m) {
+  const base = `/api/library/${m.id}/file`;
+  const card = document.createElement("div"); card.className = "lib-card";
+  const thumb = m.files?.thumb ? `${base}/${m.files.thumb}` : `${base}/full.png`;
+  const date = (m.created_at || "").slice(0, 16).replace("T", " ");
+  card.innerHTML = `
+    <div class="lib-thumb"><img loading="lazy" src="${thumb}" alt=""><span class="lib-ver">v${m.version}</span></div>
+    <div class="lib-meta"><span class="lib-date">${date}</span>
+      <span class="lib-badges">${m.theme ? `<i>${m.theme}</i>` : ""}${m.target_lang ? `<i>${m.target_lang}</i>` : ""}</span></div>
+    <div class="lib-actions"></div>`;
+  card.querySelector(".lib-thumb").onclick = () => lightbox(`${base}/full.png`);
+  const acts = card.querySelector(".lib-actions");
+  acts.appendChild(libBtn(t("lib.view"), () => lightbox(`${base}/full.png`)));
+  const dl = document.createElement("a");
+  dl.className = "lib-btn"; dl.href = `${base}/full.png`; dl.download = `${m.project}_v${m.version}.png`;
+  dl.textContent = t("lib.download"); acts.appendChild(dl);
+  acts.appendChild(libBtn(t("lib.regen"), () => regen(m.id)));
+  acts.appendChild(libBtn(t("lib.delete"), () => delEntry(m.id), "danger"));
+  return card;
+}
+function libBtn(label, fn, cls = "") {
+  const b = document.createElement("button"); b.className = "lib-btn " + cls; b.textContent = label; b.onclick = fn; return b;
+}
+async function regen(id) {
+  await fetch(`/api/library/${id}/regenerate`, { method: "POST", headers: { "Content-Type": "application/json" }, body: "{}" });
+  toast(t("lib.regenDone")); refreshLibrary();
+}
+async function delEntry(id) {
+  if (!confirm(t("lib.confirmDel"))) return;
+  await fetch(`/api/library/${id}`, { method: "DELETE" });
+  toast(t("lib.deleted")); refreshLibrary();
+}
+function lightbox(src) {
+  $("#lightboxImg").src = src; $("#lightbox").classList.remove("hidden");
+}
+function escapeHtml(s) { const d = document.createElement("div"); d.textContent = s || ""; return d.innerHTML; }
+
 /* ───────── wire UI ───────── */
+$("#historyBtn").onclick = openLibrary;
+$$("[data-lib-close]").forEach((el) => el.onclick = closeLibrary);
+$$("[data-lb-close]").forEach((el) => el.onclick = () => $("#lightbox").classList.add("hidden"));
 $("#settingsBtn").onclick = openModal;
 $("#statusPill").onclick = openModal;
 $$("[data-close]").forEach((el) => el.onclick = closeModal);
@@ -214,12 +280,18 @@ $("#saveSettings").onclick = saveSettings;
 $$(".prov-card").forEach((c) => c.onclick = () => setProvider(c.dataset.prov));
 $("#toggleKey").onclick = () => { const i = $("#apiKey"); i.type = i.type === "password" ? "text" : "password"; };
 $("#langBtn").onclick = toggleLang;
-document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
+document.addEventListener("keydown", (e) => {
+  if (e.key !== "Escape") return;
+  if (!$("#lightbox").classList.contains("hidden")) $("#lightbox").classList.add("hidden");
+  else if (!$("#library").classList.contains("hidden")) closeLibrary();
+  else closeModal();
+});
 document.addEventListener("langchange", () => {  // re-localize dynamic bits
   refreshHealth();
   if (lastResult && !$("#stateResult").classList.contains("hidden")) showResult(lastResult.id, lastResult.result);
 });
 if (location.hash === "#settings") openModal();
+if (location.hash === "#library") openLibrary();
 
 applyI18n();
 loadSettings();
