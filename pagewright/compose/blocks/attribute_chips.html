@@ -1,0 +1,20 @@
+{% import "blocks/macros.html" as m %}
+{% set ld = s.leads.get('attributes') %}
+<section class="section s-attr">
+  {{ m.section_head(no.attributes, ld, lang, 'Attribute System', ('属性图标体系' if lang.secondary else 'Attribute System'), s.attributes|map(attribute='group')|select|join(' · ')) }}
+  {% if ld and (ld.text or ld.text_secondary) %}<div class="attr-lead">{{ (ld.text_secondary if (lang.secondary and ld.text_secondary) else ld.text)|safe_inline }}</div>{% endif %}
+  {% for grp in s.attributes %}
+  <div class="attr-block">
+    <div class="abh">{% if m.sub(grp.group, grp.group_secondary) %}<span class="en">{{ m.sub(grp.group, grp.group_secondary)|upper }}</span>{% endif %}<span class="cn">{{ m.main(grp.group, grp.group_secondary) }}</span>{% if grp.note %}<span class="note">{{ grp.note }}</span>{% endif %}</div>
+    <div class="chips">
+      {% for v in grp.values %}
+      <div class="chip">
+        {% if has_asset(v.icon) %}<img src="{{ asset_url(v.icon) }}" alt="{{ v.name }}">{% endif %}
+        <div class="ccn">{{ m.main(v.name, v.name_secondary) }}</div>
+        {% if m.has_sub(v.name, v.name_secondary) %}<div class="cen en">{{ m.sub(v.name, v.name_secondary) }}</div>{% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+</section>

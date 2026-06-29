@@ -1,0 +1,39 @@
+# ─── Python ───
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.build-venv/
+.pytest_cache/
+
+# ─── Env / secrets ───
+.env
+.env.*
+!.env.example
+
+# ─── OS ───
+.DS_Store
+
+# ─── Generated artifacts (NOT the source templates!) ───
+out/
+work/
+/page.html
+**/output/
+examples/*/page.html
+/tmp/
+
+# ─── Third-party brand assets — DO NOT redistribute (copyright belongs to the brand) ───
+# The SA example ships only its product_spec.json + theme; supply the real icons/photos
+# locally per examples/sa_infinity/ASSETS.md.
+examples/*/assets/
+
+# Packaging output
+packaging/build/
+packaging/dist/
+
+# icon build intermediate
+packaging/icon/*.iconset/

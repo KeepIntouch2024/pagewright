@@ -1,0 +1,50 @@
+{% import "blocks/macros.html" as m %}
+{% set c = s.comparison %}
+{% set ld = s.leads.get('comparison') %}
+<section class="section s-comp">
+  {{ m.section_head(no.comparison, ld, lang, 'Quick Comparison', ('速查对比表' if lang.secondary else 'At a Glance'), 'All Builds at a Glance') }}
+  {% if c.rows %}
+  <table class="ctable">
+    <thead>
+      <tr>
+        <th></th>
+        {% for col in c.columns %}
+        <th{% if loop.index0 == flag_col %} class="flag"{% endif %}><span class="cn">{{ col }}</span>{% if c.columns_secondary and c.columns_secondary[loop.index0] %}<span class="en">{{ c.columns_secondary[loop.index0] }}</span>{% endif %}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in c.rows %}
+      <tr>
+        <th>{{ m.main(row.label, row.label_secondary) }}</th>
+        {% for cell in row.cells %}
+        {% set is_flag = (loop.index0 == flag_col) %}
+        {% if row.kind == 'bool' %}
+          {% set yes = cell in ['✓','yes','true','1','Y','是'] %}
+          <td class="{% if is_flag %}flag {% endif %}{{ 'yes' if yes else 'no' }}">{{ '✓' if yes else '—' }}</td>
+        {% elif row.kind == 'rating' %}
+          <td class="{% if is_flag %}flag {% endif %}star">{{ cell|safe_inline }}</td>
+        {% else %}
+          <td{% if is_flag %} class="flag"{% endif %}>{{ cell|safe_inline }}</td>
+        {% endif %}
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+
+  {% for rt in c.ref_tables %}
+  <div class="grain">
+    <div class="grain-h"><span class="cn">{{ m.main(rt.title, rt.title_secondary) }}</span>{% if m.has_sub(rt.title, rt.title_secondary) %}<span class="en">{{ rt.title_secondary if not lang.secondary else rt.title }}</span>{% endif %}{% if rt.note %}<span class="nt">{{ rt.note }}</span>{% endif %}</div>
+    <table class="gtable">
+      <thead><tr>{% for h in rt.header %}<th>{{ h|safe_inline }}</th>{% endfor %}</tr></thead>
+      <tbody>
+        {% for r in rt.rows %}
+        <tr>{% for cell in r %}{% if loop.first %}<th>{{ cell|safe_inline }}</th>{% else %}<td>{{ cell|safe_inline }}</td>{% endif %}{% endfor %}</tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% endfor %}
+</section>

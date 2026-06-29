@@ -1,0 +1,70 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pagewright"
+version = "0.1.0"
+description = "LLM-orchestrated e-commerce poster / product-detail-page (详情页) generator. Acquire material from any product URL (or your own uploads), normalize it to a ProductSpec, and render a pixel-accurate long-image via HTML→PNG."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [{ name = "Pagewright contributors" }]
+keywords = ["ecommerce", "poster", "detail-page", "详情页", "llm", "scraping", "html-to-image"]
+
+dependencies = [
+    "pydantic>=2.6",
+    "jinja2>=3.1",
+    "pillow>=10.0",
+    "numpy>=1.24",
+    "httpx>=0.27",
+    "click>=8.1",
+    "rich>=13.0",
+    "python-dotenv>=1.0",
+    "tomli>=2.0; python_version < '3.11'",
+]
+
+[project.optional-dependencies]
+# Tier-2/3 acquisition + HTML→PNG rendering.
+browser = ["playwright>=1.44"]
+# Tier-1 static extraction.
+extract = ["trafilatura>=1.8", "selectolax>=0.3", "beautifulsoup4>=4.12"]
+# LLM backends (pick what you use).
+anthropic = ["anthropic>=0.40"]
+openai = ["openai>=1.40"]
+# Background removal for product cut-outs.
+cutout = ["rembg>=2.0", "onnxruntime>=1.17"]
+# Local web UI (`pagewright serve`).
+app = ["fastapi>=0.110", "uvicorn>=0.29", "python-multipart>=0.0.9"]
+# Double-click desktop app (`pagewright app`) — native window via the OS webview.
+desktop = ["fastapi>=0.110", "uvicorn>=0.29", "python-multipart>=0.0.9", "pywebview>=5.0"]
+# Build a standalone .app / .exe.
+build = ["pyinstaller>=6.6"]
+# Everything.
+all = [
+    "playwright>=1.44",
+    "trafilatura>=1.8", "selectolax>=0.3", "beautifulsoup4>=4.12",
+    "anthropic>=0.40", "openai>=1.40",
+    "rembg>=2.0", "onnxruntime>=1.17",
+    "fastapi>=0.110", "uvicorn>=0.29", "python-multipart>=0.0.9", "pywebview>=5.0",
+]
+dev = ["pytest>=8.0", "ruff>=0.5"]
+
+[project.scripts]
+pagewright = "pagewright.cli:main"
+
+[project.gui-scripts]
+pagewright-app = "pagewright.app.desktop:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["pagewright"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"pagewright/compose/blocks" = "pagewright/compose/blocks"
+"pagewright/compose/themes" = "pagewright/compose/themes"
+"pagewright/compose/base.html" = "pagewright/compose/base.html"
+"pagewright/app/static" = "pagewright/app/static"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"

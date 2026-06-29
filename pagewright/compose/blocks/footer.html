@@ -1,0 +1,17 @@
+{% import "blocks/macros.html" as m %}
+<footer class="foot">
+  {% if brand %}
+  <div class="foot-top">
+    <div class="sa-logo en">{% if has_asset(brand.logo) %}<img src="{{ asset_url(brand.logo) }}" alt="{{ brand.name }}">{% else %}{{ brand.abbr or brand.name[:2]|upper }}{% endif %}</div>
+    <div class="ft en">{{ brand.name }}{% if p.family or brand.since %}<small>{% if p.family %}{{ p.family }}{% endif %}{% if brand.since %} · SINCE {{ brand.since }}{% endif %}</small>{% endif %}</div>
+    {% if brand.origin %}<div class="ftr en">{{ brand.origin }}</div>{% endif %}
+  </div>
+  {% endif %}
+  {% if source_hosts %}
+  <div class="src">
+    {% if lang.secondary %}数据与图片来源：{% else %}Data &amp; images sourced from: {% endif %}
+    {% for h in source_hosts %}<b>{{ h }}</b>{% if not loop.last %}, {% endif %}{% endfor %}
+    {% if lang.secondary %}。版权归原始品牌所有；英文为原文，{{ lang.secondary }} 为对照参考。{% else %}. Copyright belongs to the original brand.{% endif %}
+  </div>
+  {% endif %}
+</footer>

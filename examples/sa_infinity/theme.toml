@@ -1,0 +1,23 @@
+# SA Infinity uses the default "editorial" palette. Copied here so the example is
+# self-contained and to show how you'd ship a per-product theme.
+[colors]
+red = "#D81E05"
+red2 = "#B5160A"
+ink = "#1b1b1b"
+ink2 = "#2a2a2a"
+paper = "#FBF8F2"
+cream = "#F3ECDF"
+cream2 = "#EDE4D3"
+teal = "#0B4F48"
+gold = "#A9823C"
+muted = "#7a7468"
+line = "#e4ddcd"
+line2 = "#d8cfbb"
+dark = "#161616"
+
+[fonts]
+cjk = '"PingFang SC","Noto Sans SC","Hiragino Sans GB","Microsoft YaHei",sans-serif'
+latin = '"Helvetica Neue",Helvetica,Arial,sans-serif'
+
+[layout]
+width = 750

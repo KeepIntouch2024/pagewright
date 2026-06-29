@@ -1,0 +1,27 @@
+{% import "blocks/macros.html" as m %}
+{% set ld = s.leads.get('features') %}
+<section class="section s-tech">
+  {{ m.section_head(no.features, ld, lang, ('Technologies · 中英对照' if lang.secondary else 'Technologies'), (p.name_secondary or p.name), s.features|length ~ ' Core Technologies') }}
+  {% if ld and (ld.text or ld.text_secondary) %}<div class="tech-note">{{ (ld.text_secondary if (lang.secondary and ld.text_secondary) else ld.text)|safe_inline }}</div>{% endif %}
+  {% for g in feature_groups %}
+  <div class="tgroup">
+    {% if g.group or g.group_secondary %}
+    <div class="tgroup-h"><div class="gi en">{{ loop.index }}</div><div class="gcn">{{ m.main(g.group, g.group_secondary) }}</div>{% if m.has_sub(g.group, g.group_secondary) %}<div class="gen en">{{ m.sub(g.group, g.group_secondary) }}</div>{% endif %}<div class="gl"></div></div>
+    {% endif %}
+    <div class="tgrid">
+      {% for f in g.feats %}
+      <div class="tcard">
+        <div class="ic{% if not has_asset(f.icon) %} noimg{% endif %}">{% if has_asset(f.icon) %}<img src="{{ asset_url(f.icon) }}" alt="{{ f.name }}">{% else %}{{ f.name }}{% endif %}</div>
+        <div class="tx">
+          <div class="tcn">{{ m.main(f.name, f.name_secondary) }}</div>
+          {% if m.has_sub(f.name, f.name_secondary) %}<div class="ten en">{{ m.sub(f.name, f.name_secondary) }}</div>{% endif %}
+          {% if f.desc or f.desc_secondary %}<div class="td">{{ (f.desc_secondary if (lang.secondary and f.desc_secondary) else f.desc) }}</div>{% endif %}
+          {% if m.has_sub(f.desc, f.desc_secondary) %}<div class="tde en">{{ f.desc }}</div>{% endif %}
+          {% if f.used_by %}<div class="use">用于 · <b>{{ names_for(f.used_by) }}</b></div>{% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+</section>

@@ -1,0 +1,15 @@
+{% import "blocks/macros.html" as m %}
+<section class="closer">
+  {% if p.tagline %}<div class="ceyebrow en">{{ p.tagline }}</div>{% endif %}
+  <div class="cwm en">{{ p.family or p.name }}</div>
+  {% if (p.family_secondary or p.name_secondary) and lang.secondary %}<div class="ccn">{{ p.family_secondary or p.name_secondary }}</div>{% endif %}
+  {% set recap = p.summary_secondary if (lang.secondary and p.summary_secondary) else p.summary %}
+  {% if recap %}<div class="crecap">{{ recap }}</div>{% endif %}
+  {% if s.hero_stats %}
+  <div class="cchips en">
+    {% for st in s.hero_stats %}<div><div class="k">{{ st.k }}</div>{% if st.v %}<div class="v">{{ st.v }}</div>{% endif %}</div>{% endfor %}
+  </div>
+  {% endif %}
+  {% if p.cta or p.cta_secondary %}<div class="ccta">{{ (p.cta_secondary if (lang.secondary and p.cta_secondary) else p.cta) }}</div>{% endif %}
+  {% if brand and (brand.origin or brand.since) %}<div class="ctrust">{% if brand.origin %}<b>{{ brand.origin }}</b>{% endif %}{% if brand.since %} · {{ brand.name }} since {{ brand.since }}{% endif %}</div>{% endif %}
+</section>

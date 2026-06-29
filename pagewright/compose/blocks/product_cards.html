@@ -1,0 +1,27 @@
+{% import "blocks/macros.html" as m %}
+{% set ld = s.leads.get('variants') %}
+<section class="section s-builds">
+  {{ m.section_head(no.variants, ld, lang, 'The Lineup', ('逐款详解' if lang.secondary else 'The Lineup'), s.variants|length ~ ' Builds') }}
+  {% if ld and (ld.text or ld.text_secondary) %}<div class="lead">{{ (ld.text_secondary if (lang.secondary and ld.text_secondary) else ld.text)|safe_inline }}</div>{% endif %}
+  {% for v in s.variants %}
+  <div class="pcard{% if v.flagship %} flagship{% endif %}">
+    {% if v.rank %}<div class="rank en">{{ v.rank }}</div>{% endif %}
+    <div class="pimg">
+      {% if has_asset(v.image) %}<img src="{{ asset_url(v.image) }}" alt="{{ v.name }}">{% endif %}
+      {% if v.price %}<div class="price">{{ v.price }}</div>{% endif %}
+    </div>
+    <div class="pbody">
+      {% if v.category %}<div class="pcat en">{{ v.category }}</div>{% endif %}
+      <div class="pname en">{{ v.name }}</div>
+      {% if v.positioning %}<span class="ppos">{{ v.positioning }}</span>{% endif %}
+      {% if v.desc or v.desc_secondary %}<div class="pdesc">{{ (v.desc_secondary if (lang.secondary and v.desc_secondary) else v.desc) }}</div>{% endif %}
+      {% if v.badges %}<div class="pmeta">{% for b in v.badges %}<span class="tagm">{{ b|safe_inline }}</span>{% endfor %}</div>{% endif %}
+      {% if v.feature_ids %}
+      <div class="ptech"><span class="lbl">{% if lang.secondary %}官方科技{% else %}Tech{% endif %}</span>
+        {% for fid in v.feature_ids %}{% set f = s.feature_by_id(fid) %}{% if f and has_asset(f.icon) %}<img src="{{ asset_url(f.icon) }}" alt="{{ f.name }}">{% endif %}{% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  {% endfor %}
+</section>

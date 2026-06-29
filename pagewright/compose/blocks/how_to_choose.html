@@ -1,0 +1,14 @@
+{% import "blocks/macros.html" as m %}
+{% set ld = s.leads.get('guidance') %}
+<section class="section s-choose">
+  {{ m.section_head(no.guidance, ld, lang, 'How to Choose', ('你该选哪一款？' if lang.secondary else 'Which One?'), 'Find Your Match') }}
+  {% if ld and (ld.text or ld.text_secondary) %}<div class="lead">{{ (ld.text_secondary if (lang.secondary and ld.text_secondary) else ld.text)|safe_inline }}</div>{% endif %}
+  <div class="choose-grid">
+    {% for g in s.guidance %}
+    <div class="crow{% if g.highlight %} gold{% endif %}">
+      <div class="q">{% if g.highlight %}★{% else %}◎{% endif %}</div>
+      <div class="ct"><div class="cq">{{ (g.q_secondary if (lang.secondary and g.q_secondary) else g.q) }}</div><div class="ca">{{ (g.a_secondary if (lang.secondary and g.a_secondary) else g.a)|safe_inline }}</div></div>
+    </div>
+    {% endfor %}
+  </div>
+</section>

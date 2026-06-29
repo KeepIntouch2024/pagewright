@@ -1,0 +1,16 @@
+{% import "blocks/macros.html" as m %}
+{% set ld = s.leads.get('highlights') %}
+<section class="section s-dna">
+  {{ m.section_head(no.highlights, ld, lang, 'Design DNA', (p.name_secondary or p.name), m.sub(p.name, p.name_secondary)) }}
+  {% if ld and (ld.text or ld.text_secondary) %}<div class="lead">{{ (ld.text_secondary if (lang.secondary and ld.text_secondary) else ld.text)|safe_inline }}</div>{% endif %}
+  <div class="pillars" style="grid-template-columns:repeat({{ [s.highlights|length, 3]|min }},1fr)">
+    {% for h in s.highlights %}
+    <div class="pillar">
+      {% if h.key %}<div class="pk en">{{ h.key }}</div>{% endif %}
+      <div class="pcn">{{ m.main(h.name, h.name_secondary) }}</div>
+      {% if h.desc or h.desc_secondary %}<p>{{ (h.desc_secondary if (lang.secondary and h.desc_secondary) else h.desc) }}</p>{% endif %}
+      {% if m.has_sub(h.desc, h.desc_secondary) %}<div class="pen en">{{ h.desc }}</div>{% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</section>

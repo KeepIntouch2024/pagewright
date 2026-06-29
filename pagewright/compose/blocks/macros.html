@@ -1,0 +1,25 @@
+{# Bilingual display convention for a localized 详情页:
+   the page is built for the SECONDARY-language market (e.g. selling an English brand in
+   Chinese), so the prominent "main" text is the translation and the original sits as a
+   sub/eyebrow line. With no secondary language, main = primary and sub is empty. #}
+{% macro main(primary, secondary) -%}
+{{ secondary if secondary else primary }}
+{%- endmacro %}
+{% macro sub(primary, secondary) -%}
+{% if secondary and primary %}{{ primary }}{% endif %}
+{%- endmacro %}
+{% macro has_sub(primary, secondary) -%}
+{% if secondary and primary %}1{% endif %}
+{%- endmacro %}
+
+{# Numbered section heading: eyebrow + (number, big title, latin subtitle) + rule.
+   Uses the section's Lead (ld) when it supplies eyebrow/title/subtitle, else the defaults. #}
+{% macro section_head(num, ld, lang, eyebrow, default_title, default_sub) -%}
+  <div class="eyebrow en">{{ ld.eyebrow if (ld and ld.eyebrow) else eyebrow }}</div>
+  <div class="h-row"><div class="h-num en">{{ num }}</div><div>
+    <div class="h-title">{% if ld and lang.secondary and ld.title_secondary %}{{ ld.title_secondary }}{% elif ld and ld.title %}{{ ld.title }}{% else %}{{ default_title }}{% endif %}</div>
+    {% set sub = ld.subtitle if (ld and ld.subtitle) else default_sub %}
+    {% if sub %}<div class="h-en en">{{ sub }}</div>{% endif %}
+  </div></div>
+  <div class="rule"></div>
+{%- endmacro %}

@@ -1,0 +1,14 @@
+{% import "blocks/macros.html" as m %}
+<div class="lineup">
+  {% if p.family or p.family_secondary %}
+  <div class="cap en">{{ (p.family_secondary if (lang.secondary and p.family_secondary) else p.family) or p.name }}</div>
+  {% endif %}
+  <div class="lineup-grid" style="grid-template-columns:repeat({{ s.variants|length }},1fr)">
+    {% for v in s.variants %}
+    <div class="cell">
+      {% if has_asset(v.image) %}<img src="{{ asset_url(v.image) }}" alt="{{ v.name }}">{% endif %}
+      <div class="nm en">{{ v.name }}{% if v.positioning %}<span>{{ v.positioning }}</span>{% endif %}</div>
+    </div>
+    {% endfor %}
+  </div>
+</div>

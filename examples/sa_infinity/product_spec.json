@@ -1,0 +1,316 @@
+{
+  "meta": {
+    "source_urls": ["https://scientificanglers.com/"],
+    "captured_at": "2026-06-19",
+    "language": { "primary": "en", "secondary": "zh-CN" },
+    "brand": {
+      "name": "SCIENTIFIC ANGLERS",
+      "abbr": "SA",
+      "since": "1945",
+      "origin": "Midland, Michigan · U.S.A.",
+      "tagline": "PREMIUM FLY LINE"
+    }
+  },
+  "product": {
+    "name": "Infinity Family",
+    "family": "INFINITY FAMILY",
+    "family_secondary": "无限家族 · 七种构造",
+    "category": "Freshwater Floating Fly Line · 淡水浮水飞钓线",
+    "tagline": "SEVEN BUILDS. ONE TAPER. NO LIMITS.",
+    "tagline_secondary": "一套锥度，七种构造",
+    "summary_secondary": "飞钓圈一直有个说法：淡水里不存在“一条线走天下”。Infinity 偏要打破它——超长头身配明显前锥，既能“轰”出抽水亮片，又留得住干蝇的细腻；压线如丝、远近皆可。从入门的 Mastery 到旗舰的透明纹理，同一条全能锥度，给你七种性格与场景的自由组合。",
+    "cta_secondary": "立即选购 · 七款任选"
+  },
+  "hero_stats": [
+    { "k": "7", "v": "BUILDS 款构造" },
+    { "k": "WF 3–8", "v": "LINE WEIGHT 线号" },
+    { "k": "90FT", "v": "27.5M 总长" },
+    { "k": "½ HEAVY", "v": "重半号 加载" }
+  ],
+  "leads": {
+    "highlights": {
+      "eyebrow": "Design DNA",
+      "title_secondary": "为什么它能“一条线走天下”",
+      "subtitle": "The Infinity Taper",
+      "text": "One Infinity all-rounder taper runs through the whole family.",
+      "text_secondary": "同一条 <b class='hl'>Infinity 全能锥度</b>贯穿全家族：<b class='hl'>超长头部</b>负责远投与压线，<b class='hl'>明显前锥</b>保留转头与干蝇的细腻，<b class='hl'>重半号设计</b>让快调竿也能轻松上满。三个设计支点，撑起了“全能”二字。"
+    },
+    "features": {
+      "eyebrow": "Technologies Decoded · 中英对照",
+      "title_secondary": "SA 飞钓线科技图标全解",
+      "subtitle": "12 Core Technologies in the Infinity Family",
+      "text": "Every SA line is tagged with official icons for the tech it carries.",
+      "text_secondary": "SA 官网每款线都用一组<b>官方图标</b>标注其搭载科技。<b>不同档次的 Infinity 科技并不相同</b>——下面是本家族会出现的全部 <b>12 项核心科技</b>，图标均为官网原版，附中英对照说明。每项末尾标注了“用于”哪些构造，方便对照下方产品卡。"
+    },
+    "attributes": {
+      "eyebrow": "SA Attribute System",
+      "title_secondary": "SA 官方属性图标体系",
+      "subtitle": "Water · Temp · Fishing · Species",
+      "text": "Four icon axes flag where each line fits.",
+      "text_secondary": "除了科技图标，SA 还用四组属性图标快速标注每款线的适用场景：<b>水域 Water Type · 水温 Water Temp · 钓法 Fishing Type · 鱼种 Species</b>。看懂这套图标，下方每张产品卡一眼就懂。"
+    },
+    "variants": {
+      "eyebrow": "The Seven Builds",
+      "title_secondary": "七款构造 · 逐一详解",
+      "subtitle": "From Entry to Flagship",
+      "text": "One Infinity taper, seven builds.",
+      "text_secondary": "同一条 Infinity 锥度，七种构造。从入门的 <b>Mastery</b> 到透明纹理旗舰 <b>Mag Textured Clear</b>，按场景、水温与表现需求各取所需。每卡右侧的小图标即该款的官方搭载科技。"
+    },
+    "comparison": {
+      "eyebrow": "Quick Comparison",
+      "title_secondary": "全系速查对比表",
+      "subtitle": "All Seven Builds at a Glance"
+    },
+    "guidance": {
+      "eyebrow": "How to Choose",
+      "title_secondary": "你该选哪一款？",
+      "subtitle": "Find Your Infinity"
+    }
+  },
+  "highlights": [
+    {
+      "key": "Core 线芯",
+      "name": "编织复合丝线芯",
+      "desc": "Braided multifilament core — low memory, supple feel.",
+      "desc_secondary": "多数款采用多股编织复合丝线芯（braided multifilament），低延展、低记忆、手感柔顺，适配宽广水温区间——冷水不僵硬，温水不发软。"
+    },
+    {
+      "key": "Taper 锥度",
+      "name": "超长头部 + 明显前锥",
+      "desc": "Extended head + substantial front taper — distance, mending & delicacy.",
+      "desc_secondary": "加长头身让远投与水面控线游刃有余；明显的前端锥度负责干净的转头，又保留干蝇所需的细腻呈现。"
+    },
+    {
+      "key": "Loading 加载",
+      "name": "比标准重半号",
+      "desc": "Built ½-size heavy (Plus = full size) to load fast-action rods.",
+      "desc_secondary": "多数款比标准线号重半号，近距即可上满、快调竿好驾驭；Plus 款则整整重一号，专为最快调性与大物钓组。"
+    }
+  ],
+  "features": [
+    {
+      "id": "ast", "group": "Coatings & Slickness", "group_secondary": "涂层与滑度",
+      "name": "AST", "name_secondary": "顺滑添加剂",
+      "desc": "Patented dry-slick coating; casts farther, floats higher.",
+      "desc_secondary": "SA 专利“干滑”涂层，持续顺滑、自动抖落泥沙与藻类——抛得更远、浮得更高、更耐脏。",
+      "icon": { "asset": "assets/icons/ast.png" }, "used_by": ["mastery"]
+    },
+    {
+      "id": "ast-plus", "group": "Coatings & Slickness", "group_secondary": "涂层与滑度",
+      "name": "AST Plus", "name_secondary": "升级顺滑添加剂",
+      "desc": "Up to 50% slicker than AST, 200% more durable.",
+      "desc_secondary": "全寿命持续顺滑：比初代 AST 顺滑达 50%，耐用性高出同类竞品 200%。",
+      "icon": { "asset": "assets/icons/ast-plus.png" },
+      "used_by": ["amp-smooth", "amp-textured", "amp-plus", "amp-warm"]
+    },
+    {
+      "id": "est-plus", "group": "Coatings & Slickness", "group_secondary": "涂层与滑度",
+      "name": "EST Plus", "name_secondary": "环保顺滑添加剂",
+      "desc": "Eco-friendly additive; unmatched durability, smoother shooting.",
+      "desc_secondary": "专有顺滑配方，兼顾无与伦比的耐用性、更顺畅的射线表现，同时更环保。",
+      "icon": { "asset": "assets/icons/est-plus.png" }, "used_by": ["mag-smooth", "mag-textured"]
+    },
+    {
+      "id": "duracoat", "group": "Coatings & Slickness", "group_secondary": "涂层与滑度",
+      "name": "Duracoat", "name_secondary": "双聚合物耐磨涂层",
+      "desc": "Dual-polymer coat; less memory & tangle, more abrasion resistance.",
+      "desc_secondary": "双聚合物配方同时优化硬挺度、顺滑度与耐磨性，并大幅降低线圈记忆与缠绕。",
+      "icon": { "asset": "assets/icons/duracoat.png" }, "used_by": ["mag-smooth", "mag-textured"]
+    },
+    {
+      "id": "floating-texture", "group": "Surface Texture & Flotation", "group_secondary": "表面纹理与浮力",
+      "name": "Floating Texture", "name_secondary": "浮水纹理",
+      "desc": "Microtexture traps air; floats higher, mends easier.",
+      "desc_secondary": "微复制纹理锁住空气——浮得更高、射线更佳、消除反光、降低摩擦，压线与提线更轻松。",
+      "icon": { "asset": "assets/icons/floating-texture.png" }, "used_by": ["amp-textured", "mag-textured"]
+    },
+    {
+      "id": "shooting-texture", "group": "Surface Texture & Flotation", "group_secondary": "表面纹理与浮力",
+      "name": "Shooting Texture", "name_secondary": "射线纹理",
+      "desc": "Golf-ball divots; smooth feel, textured performance.",
+      "desc_secondary": "高尔夫球式半球凹点，手感接近光面线，却兼具纹理的优势——更耐用、更易远投。",
+      "icon": { "asset": "assets/icons/shooting-texture.png" }, "used_by": ["amp-textured", "mag-textured"]
+    },
+    {
+      "id": "cft", "group": "Surface Texture & Flotation", "group_secondary": "表面纹理与浮力",
+      "name": "Clear Floating Tech", "name_secondary": "透明浮水科技",
+      "desc": "Naturally buoyant polymers; stealth + durability.",
+      "desc_secondary": "采用天然具备浮力的聚合物，实现极致隐蔽的呈饵效果，以及同级别中最佳的耐用性。",
+      "icon": { "asset": "assets/icons/cft.png" }, "used_by": ["mag-smooth", "mag-textured"]
+    },
+    {
+      "id": "improved-dry-tip", "group": "Surface Texture & Flotation", "group_secondary": "表面纹理与浮力",
+      "name": "Improved Dry Tip", "name_secondary": "改进型干浮线头",
+      "desc": "Microballoon tip floats 2× higher; positive hook-ups.",
+      "desc_secondary": "微气囊配方让线头浮力达普通线两倍——前端阻力更小、干蝇久浮、中鱼更扎实。",
+      "icon": { "asset": "assets/icons/improved-dry-tip.png" },
+      "used_by": ["amp-smooth", "amp-textured", "amp-plus", "amp-warm"]
+    },
+    {
+      "id": "sa-id", "group": "ID · Connection · Reference", "group_secondary": "标识 · 连接 · 参考点",
+      "name": "SA·ID", "name_secondary": "线身识别系统",
+      "desc": "Line-marking on tip; identify weight at a glance.",
+      "desc_secondary": "线头前 1–2 英尺印有型号标识，一眼辨别线号/克重，多条线收纳也不混淆。",
+      "icon": { "asset": "assets/icons/sa-id.png" },
+      "used_by": ["mastery", "amp-smooth", "amp-textured", "amp-plus", "amp-warm", "mag-smooth", "mag-textured"]
+    },
+    {
+      "id": "welded-loops", "group": "ID · Connection · Reference", "group_secondary": "标识 · 连接 · 参考点",
+      "name": "Welded Loops", "name_secondary": "焊接线环",
+      "desc": "Slick, strong welded loops; smoother turnover.",
+      "desc_secondary": "既顺滑又结实的原厂焊接环，无缝过渡——抛投更顺、落水更柔，连接 leader 与 backing 更快。",
+      "icon": { "asset": "assets/icons/welded-loops.png" },
+      "used_by": ["mastery", "amp-smooth", "amp-textured", "amp-plus", "amp-warm", "mag-smooth", "mag-textured"]
+    },
+    {
+      "id": "trp", "group": "ID · Connection · Reference", "group_secondary": "标识 · 连接 · 参考点",
+      "name": "Tactile Reference Point", "name_secondary": "触感参考点",
+      "desc": "Non-embossed zone; feel & hear the transition.",
+      "desc_secondary": "头段与放行线交界处的一段无压纹区，让你在纹理线上“摸到”并“听到”这一过渡，精准控线。",
+      "icon": { "asset": "assets/icons/trp.png" }, "used_by": ["amp-textured"]
+    },
+    {
+      "id": "camo", "group": "ID · Connection · Reference", "group_secondary": "标识 · 连接 · 参考点",
+      "name": "Camo", "name_secondary": "迷彩涂装",
+      "desc": "Muted camo blend; stealth for wary fish.",
+      "desc_secondary": "低调的混合迷彩配色，为警觉的鱼、低水位等任何需要额外隐蔽的场合提供伪装。",
+      "icon": { "asset": "assets/icons/camo.png" }, "used_by": ["amp-smooth", "amp-textured"]
+    }
+  ],
+  "attributes": [
+    {
+      "group": "Water Type", "group_secondary": "水域类型", "note": "本家族全部为淡水线",
+      "values": [
+        { "name": "Freshwater", "name_secondary": "淡水", "icon": { "asset": "assets/icons/attr/freshwater.jpg" } }
+      ]
+    },
+    {
+      "group": "Water Temp", "group_secondary": "适用水温", "note": "决定涂层软硬，选错会僵/会软",
+      "values": [
+        { "name": "Cold", "name_secondary": "冷水", "icon": { "asset": "assets/icons/attr/cold.jpg" } },
+        { "name": "Medium", "name_secondary": "温水", "icon": { "asset": "assets/icons/attr/medium.jpg" } },
+        { "name": "Hot", "name_secondary": "暖热水", "icon": { "asset": "assets/icons/attr/hot.jpg" } }
+      ]
+    },
+    {
+      "group": "Fishing Type", "group_secondary": "适用钓法",
+      "values": [
+        { "name": "Streamers", "name_secondary": "拟饵蝇", "icon": { "asset": "assets/icons/attr/streamers.jpg" } },
+        { "name": "Nymphs", "name_secondary": "若虫", "icon": { "asset": "assets/icons/attr/nymphs.jpg" } },
+        { "name": "Dries", "name_secondary": "干蝇", "icon": { "asset": "assets/icons/attr/dries.jpg" } },
+        { "name": "Indicators", "name_secondary": "指示漂", "icon": { "asset": "assets/icons/attr/indicator.jpg" } },
+        { "name": "Poppers", "name_secondary": "波趴蝇/大干蝇", "icon": { "asset": "assets/icons/attr/poppers.jpg" } }
+      ]
+    },
+    {
+      "group": "Species", "group_secondary": "可钓鱼种",
+      "values": [
+        { "name": "Trout", "name_secondary": "鳟鱼", "icon": { "asset": "assets/icons/attr/trout.jpg" } },
+        { "name": "Grayling", "name_secondary": "茴鱼", "icon": { "asset": "assets/icons/attr/grayling.jpg" } },
+        { "name": "Panfish", "name_secondary": "太阳鱼", "icon": { "asset": "assets/icons/attr/panfish.jpg" } },
+        { "name": "Bass", "name_secondary": "鲈鱼", "icon": { "asset": "assets/icons/attr/bass.jpg" } },
+        { "name": "Carp", "name_secondary": "鲤鱼", "icon": { "asset": "assets/icons/attr/carp.jpg" } },
+        { "name": "Steelhead", "name_secondary": "硬头鳟", "icon": { "asset": "assets/icons/attr/steelhead.jpg" } },
+        { "name": "Salmon", "name_secondary": "鲑鱼", "icon": { "asset": "assets/icons/attr/salmon.jpg" } },
+        { "name": "Pike", "name_secondary": "狗鱼", "icon": { "asset": "assets/icons/attr/pike.jpg" } },
+        { "name": "Striper", "name_secondary": "条纹鲈", "icon": { "asset": "assets/icons/attr/stripers.jpg" } }
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "id": "mastery", "name": "Mastery Infinity", "short": "Mastery", "category": "Mastery Series",
+      "positioning": "入门全能 · 高性价比", "rank": "01 ENTRY",
+      "desc_secondary": "家族的入门之选：同样的全能锥度——轰得出抽水亮片，也压得住干蝇，压线如丝、远近皆宜。重半号便于上满竿，从鳟鱼、太阳鱼到狗鱼、硬头鳟通吃。预算有限又想要“一条全能线”，从这里开始。",
+      "badges": ["表面 · <b>光滑</b>", "加载 · <b>重半号</b>", "水温 · 冷/温", "头长 · 47–52ft"],
+      "feature_ids": ["ast", "sa-id", "welded-loops"],
+      "image": { "asset": "assets/products/mastery.png" }
+    },
+    {
+      "id": "amp-smooth", "name": "Amplitude Smooth Infinity", "short": "Amp Smooth", "category": "Amplitude Smooth",
+      "positioning": "主力光滑 · 全能首选", "rank": "02 CORE",
+      "desc_secondary": "公认世界顶级的光滑飞钓线之一：阻力最多降低 5 倍、耐用度可达传统线 8 倍。搭载 AST Plus 顺滑、改进型干浮线头与迷彩隐蔽，远投、压线、细腻呈现样样能打。要一条能陪你打大多数淡水场景的主力线，就是它。",
+      "badges": ["表面 · <b>光滑</b>", "加载 · <b>重半号</b>", "水温 · 冷/温", "配色 · 迷彩/亮绿/竹色/夜光"],
+      "feature_ids": ["ast-plus", "camo", "improved-dry-tip", "sa-id", "welded-loops"],
+      "image": { "asset": "assets/products/amp-smooth.png" }
+    },
+    {
+      "id": "amp-textured", "name": "Amplitude Textured Infinity", "short": "Amp Tex", "category": "Amplitude Textured",
+      "positioning": "主力纹理 · 极致表现", "rank": "03 PERFORMANCE",
+      "desc_secondary": "首批搭载 AST Plus 的纹理系列，射程与耐久领先市场。前端浮水纹理让干蝇浮得更久，放行线段射线纹理大幅降低摩擦、抛得更远，并配触感参考点便于控线。追求极致远投与浮力的进阶之选。",
+      "badges": ["表面 · <b>纹理</b>", "加载 · <b>重半号</b>", "水温 · 冷/温", "控线 · 触感点"],
+      "feature_ids": ["ast-plus", "floating-texture", "shooting-texture", "improved-dry-tip", "trp", "camo", "sa-id", "welded-loops"],
+      "image": { "asset": "assets/products/amp-textured.png" }
+    },
+    {
+      "id": "amp-plus", "name": "Infinity Plus", "short": "Plus", "category": "Amplitude Smooth · Plus",
+      "positioning": "加重一号 · 快调竿 / 大物", "rank": "04 POWER",
+      "desc_secondary": "Infinity 锥度的“放大版”——整整重一个线号（full size heavy），专为最快调性的竿子与较大号的鳟钓组而生。把它降一号使用，又能为慢调竿与高手提供 AFFTA 真实标准重量。重火力玩家的全能线。",
+      "badges": ["表面 · <b>光滑</b>", "加载 · <b>重一号</b>", "水温 · 冷/温", "适配 · 快调竿"],
+      "feature_ids": ["ast-plus", "improved-dry-tip", "sa-id", "welded-loops"],
+      "image": { "asset": "assets/products/amp-plus.png" }
+    },
+    {
+      "id": "amp-warm", "name": "Infinity Warm", "short": "Warm", "category": "Amplitude Smooth · Warm",
+      "positioning": "暖水版 · 温热水域", "rank": "05 WARMWATER",
+      "desc_secondary": "Infinity 锥度的暖水版：热带涂层 + 冷水线芯，跨越温差不发软。适合温暖船板上的夏日鳟钓，也擅长用小波扒、蚱蜢、亮片去打需要细腻呈现的暖水对象鱼。温/热水首选。",
+      "badges": ["表面 · <b>光滑</b>", "加载 · <b>重半号</b>", "水温 · <b>温/热</b>", "涂层 · 热带"],
+      "feature_ids": ["ast-plus", "improved-dry-tip", "sa-id", "welded-loops"],
+      "image": { "asset": "assets/products/amp-warm.png" }
+    },
+    {
+      "id": "mag-smooth", "name": "Mag Smooth Infinity Clear", "short": "Mag Clear", "category": "Magnitude Smooth Clear",
+      "positioning": "透明光滑 · 隐蔽呈饵", "rank": "06 CLEAR",
+      "desc_secondary": "Magnitude 开启透明线新纪元，告别透明线易僵、易缠的老毛病——号称市面最耐用、最顺滑的透明浮水线。透明浮水科技 + 双聚合物 Duracoat + EST+ 三料齐发，专为面对警觉鱼时的极致隐蔽呈饵。建议 10°C 以上使用。",
+      "badges": ["表面 · <b>光滑</b>", "前端 · <b>透明</b>", "水温 · 温水", "隐蔽 · ★★★★★"],
+      "feature_ids": ["cft", "duracoat", "est-plus", "sa-id", "welded-loops"],
+      "image": { "asset": "assets/products/mag-smooth.png" }
+    },
+    {
+      "id": "mag-textured", "name": "Mag Textured Infinity Clear", "short": "Mag Tex", "category": "Magnitude Textured Clear",
+      "positioning": "家族旗舰 · 透明 + 纹理集大成", "rank": "07 FLAGSHIP", "flagship": true,
+      "desc_secondary": "家族的集大成旗舰：在透明浮水的极致隐蔽之上，再叠加浮水纹理与射线纹理——隐蔽、浮力、射程与耐用一次拉满。当你既要“鱼看不见线”，又不肯在远投与浮力上妥协时，这就是终点。建议 10°C 以上使用。",
+      "badges": ["表面 · <b>纹理</b>", "前端 · <b>透明</b>", "水温 · 温水", "隐蔽 · ★★★★★"],
+      "feature_ids": ["cft", "duracoat", "est-plus", "floating-texture", "shooting-texture", "sa-id", "welded-loops"],
+      "image": { "asset": "assets/products/mag-textured.png" }
+    }
+  ],
+  "comparison": {
+    "columns": ["Mastery", "Amp Smooth", "Amp Tex", "Plus", "Warm", "Mag Clear", "Mag Tex"],
+    "columns_secondary": ["Infinity", "Infinity", "Infinity", "Smooth", "Smooth", "Smooth", "Clear"],
+    "rows": [
+      { "label": "定位", "kind": "text", "cells": ["入门", "主力光滑", "主力纹理", "加重", "暖水", "透明光滑", "旗舰"] },
+      { "label": "表面", "kind": "text", "cells": ["光滑", "光滑", "<b>纹理</b>", "光滑", "光滑", "光滑", "<b>纹理</b>"] },
+      { "label": "透明前端", "kind": "bool", "cells": ["—", "—", "—", "—", "—", "✓", "✓"] },
+      { "label": "顺滑科技", "kind": "text", "cells": ["AST", "AST+", "AST+", "AST+", "AST+", "EST+", "EST+"] },
+      { "label": "加载", "kind": "text", "cells": ["重½号", "重½号", "重½号", "<b>重1号</b>", "重½号", "重½号", "重½号"] },
+      { "label": "水温", "kind": "text", "cells": ["冷·温", "冷·温", "冷·温", "冷·温", "温·热", "温", "温"] },
+      { "label": "隐蔽性", "kind": "rating", "cells": ["★★<i>☆☆☆</i>", "★★★<i>☆☆</i>", "★★★<i>☆☆</i>", "★★★<i>☆☆</i>", "★★★<i>☆☆</i>", "★★★★★", "★★★★★"] },
+      { "label": "远投·耐久", "kind": "rating", "cells": ["★★★<i>☆☆</i>", "★★★★<i>☆</i>", "★★★★★", "★★★★★", "★★★★<i>☆</i>", "★★★★<i>☆</i>", "★★★★★"] }
+    ],
+    "ref_tables": [
+      {
+        "title": "Grain & Head Weight", "title_secondary": "克重参考 · 按竿号配线", "note": "本表为重半号款共用锥度",
+        "header": ["线号 Line Wt.", "WF-3", "WF-4", "WF-5", "WF-6", "WF-7", "WF-8"],
+        "rows": [
+          ["头重 Head<span class='sub'>grain / gram</span>", "155<span class='sub'>10.0g</span>", "190<span class='sub'>12.3g</span>", "225<span class='sub'>14.6g</span>", "265<span class='sub'>17.2g</span>", "305<span class='sub'>19.8g</span>", "350<span class='sub'>22.7g</span>"],
+          ["前30ft克重<span class='sub'>first 30ft</span>", "110<span class='sub'>7.2g</span>", "130<span class='sub'>8.5g</span>", "150<span class='sub'>9.8g</span>", "175<span class='sub'>11.2g</span>", "200<span class='sub'>12.8g</span>", "225<span class='sub'>14.5g</span>"],
+          ["头长 Head<span class='sub'>总长 90ft/27.5m</span>", "47ft", "48ft", "49ft", "50ft", "51ft", "52ft"]
+        ]
+      }
+    ]
+  },
+  "guidance": [
+    { "q": "入门之选 · 第一条全能线", "a": "选 <b>Mastery Infinity</b>——用最低门槛拿下同款全能锥度，先上手再升级。" },
+    { "q": "一线走天下 · 主力之选", "a": "选 <b>Amplitude Smooth Infinity</b>——顶级光滑、迷彩隐蔽，淡水通吃。" },
+    { "q": "极致远投 + 浮力", "a": "选 <b>Amplitude Textured Infinity</b>——双纹理射程拉满，干蝇久浮。" },
+    { "q": "快调竿 / 大号钓组", "a": "选 <b>Infinity Plus</b>——整整重一号，瞬间上满最快调性竿。" },
+    { "q": "暖水 / 夏日 / 路亚式呈饵", "a": "选 <b>Infinity Warm</b>——热带涂层不发软，温热水域稳定发挥。" },
+    { "q": "警觉鱼 / 清水 · 要隐蔽", "a": "选 <b>Mag Smooth Clear</b>——透明浮水，鱼几乎看不见线。" },
+    { "q": "全都要 · 旗舰之选", "a": "选 <b>Mag Textured Clear</b>——透明 + 纹理集大成，不向任何指标妥协。", "highlight": true },
+    { "q": "拿不准水温怎么选？", "a": "冷/温水选 <b>冷温款</b>；常年 10°C 以上或夏季选 <b>Warm / Mag</b> 系。" }
+  ],
+  "citations": [
+    { "claim": "Infinity family taper, builds and technologies", "source_url": "https://scientificanglers.com/" }
+  ]
+}

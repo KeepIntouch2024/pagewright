@@ -1,0 +1,21 @@
+{% import "blocks/macros.html" as m %}
+<section class="hero">
+  <div class="brandbar">
+    {% if brand %}
+    <div class="sa-logo en">{% if has_asset(brand.logo) %}<img src="{{ asset_url(brand.logo) }}" alt="{{ brand.name }}">{% else %}{{ brand.abbr or brand.name[:2]|upper }}{% endif %}</div>
+    <div class="nm en">{{ brand.name }}{% if brand.since or brand.origin %}<small>{% if brand.since %}SINCE {{ brand.since }}{% endif %}{% if brand.origin %} · {{ brand.origin }}{% endif %}</small>{% endif %}</div>
+    {% if p.category %}<div class="made en">{{ p.category }}</div>{% endif %}
+    {% endif %}
+  </div>
+  {% if p.category %}<div class="hero-eyebrow en">{{ p.category }}{% if p.category and lang.secondary and p.summary_secondary %}{% endif %}</div>{% endif %}
+  <h1 class="en">{{ (p.family or p.name) }}</h1>
+  {% if (p.family_secondary or p.name_secondary) and lang.secondary %}<div class="cnh">{{ p.family_secondary or p.name_secondary }}</div>{% endif %}
+  {% if p.tagline %}<div class="tag en">{{ p.tagline }}{% if p.tagline_secondary %} · {{ p.tagline_secondary }}{% endif %}</div>{% endif %}
+  {% set hero_sum = p.summary_secondary if (lang.secondary and p.summary_secondary) else p.summary %}
+  {% if hero_sum %}<div class="sub">{{ hero_sum }}</div>{% endif %}
+  {% if s.hero_stats %}
+  <div class="hero-strip en">
+    {% for st in s.hero_stats %}<div><div class="k">{{ st.k }}</div>{% if st.v %}<div class="v">{{ st.v }}</div>{% endif %}</div>{% endfor %}
+  </div>
+  {% endif %}
+</section>
