@@ -46,6 +46,8 @@ const I18N = {
     "lib.view": "查看", "lib.download": "下载", "lib.regen": "重渲染", "lib.delete": "删除",
     "lib.confirmDel": "确定删除这个版本？", "lib.regenDone": "已重渲染为新版本",
     "lib.deleted": "已删除", "lib.versions": "个版本",
+    "lib.compare": "对比", "lib.cmpPickMore": "再选 1 个版本即可对比",
+    "cmp.title": "版本对比", "cmp.sync": "同步滚动",
   },
   "en": {
     _name: "English", _other: "中", _html: "en",
@@ -88,6 +90,8 @@ const I18N = {
     "lib.view": "View", "lib.download": "Download", "lib.regen": "Re-render", "lib.delete": "Delete",
     "lib.confirmDel": "Delete this version?", "lib.regenDone": "Re-rendered as a new version",
     "lib.deleted": "Deleted", "lib.versions": "versions",
+    "lib.compare": "Compare", "lib.cmpPickMore": "Pick 1 more version to compare",
+    "cmp.title": "Version compare", "cmp.sync": "Sync scroll",
   },
 };
 

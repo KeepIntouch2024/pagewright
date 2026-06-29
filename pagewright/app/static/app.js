@@ -234,7 +234,8 @@ async function refreshLibrary() {
 
 function libCard(m) {
   const base = `/api/library/${m.id}/file`;
-  const card = document.createElement("div"); card.className = "lib-card";
+  const card = document.createElement("div"); card.className = "lib-card"; card.dataset.id = m.id;
+  if (compareSel.some((x) => x.id === m.id)) card.classList.add("cmp-on");
   const thumb = m.files?.thumb ? `${base}/${m.files.thumb}` : `${base}/full.png`;
   const date = (m.created_at || "").slice(0, 16).replace("T", " ");
   card.innerHTML = `
@@ -248,9 +249,45 @@ function libCard(m) {
   const dl = document.createElement("a");
   dl.className = "lib-btn"; dl.href = `${base}/full.png`; dl.download = `${m.project}_v${m.version}.png`;
   dl.textContent = t("lib.download"); acts.appendChild(dl);
+  acts.appendChild(libBtn(t("lib.compare"), () => toggleCompare(m, card)));
   acts.appendChild(libBtn(t("lib.regen"), () => regen(m.id)));
   acts.appendChild(libBtn(t("lib.delete"), () => delEntry(m.id), "danger"));
   return card;
+}
+
+/* ───────── version compare ───────── */
+let compareSel = [];
+function toggleCompare(m, card) {
+  const i = compareSel.findIndex((x) => x.id === m.id);
+  if (i >= 0) { compareSel.splice(i, 1); card.classList.remove("cmp-on"); return; }
+  if (compareSel.length === 2) {
+    const old = compareSel.shift();
+    document.querySelector(`.lib-card[data-id="${old.id}"]`)?.classList.remove("cmp-on");
+  }
+  compareSel.push(m); card.classList.add("cmp-on");
+  if (compareSel.length === 2) openCompare(compareSel[0], compareSel[1]);
+  else toast(t("lib.cmpPickMore"));
+}
+function openCompare(a, b) {
+  const grid = $("#cmpGrid"); grid.innerHTML = "";
+  [a, b].forEach((m) => {
+    const col = document.createElement("div"); col.className = "cmp-col";
+    const tags = [m.theme, m.target_lang].filter(Boolean).join(" · ");
+    col.innerHTML = `<div class="cmp-h"><b>v${m.version}</b><span>${escapeHtml(tags)}</span></div>
+      <div class="cmp-scroll"><img src="/api/library/${m.id}/file/full.png" alt=""></div>`;
+    grid.appendChild(col);
+  });
+  const scrolls = [...grid.querySelectorAll(".cmp-scroll")];
+  let lock = false;
+  scrolls.forEach((s) => s.addEventListener("scroll", () => {
+    if (lock || !$("#cmpSync").checked) return;
+    lock = true;
+    const denom = (s.scrollHeight - s.clientHeight) || 1;
+    const ratio = s.scrollTop / denom;
+    scrolls.forEach((o) => { if (o !== s) o.scrollTop = ratio * (o.scrollHeight - o.clientHeight); });
+    requestAnimationFrame(() => { lock = false; });
+  }));
+  $("#compare").classList.remove("hidden");
 }
 function libBtn(label, fn, cls = "") {
   const b = document.createElement("button"); b.className = "lib-btn " + cls; b.textContent = label; b.onclick = fn; return b;
@@ -273,6 +310,7 @@ function escapeHtml(s) { const d = document.createElement("div"); d.textContent 
 $("#historyBtn").onclick = openLibrary;
 $$("[data-lib-close]").forEach((el) => el.onclick = closeLibrary);
 $$("[data-lb-close]").forEach((el) => el.onclick = () => $("#lightbox").classList.add("hidden"));
+$$("[data-cmp-close]").forEach((el) => el.onclick = () => $("#compare").classList.add("hidden"));
 $("#settingsBtn").onclick = openModal;
 $("#statusPill").onclick = openModal;
 $$("[data-close]").forEach((el) => el.onclick = closeModal);
@@ -283,6 +321,7 @@ $("#langBtn").onclick = toggleLang;
 document.addEventListener("keydown", (e) => {
   if (e.key !== "Escape") return;
   if (!$("#lightbox").classList.contains("hidden")) $("#lightbox").classList.add("hidden");
+  else if (!$("#compare").classList.contains("hidden")) $("#compare").classList.add("hidden");
   else if (!$("#library").classList.contains("hidden")) closeLibrary();
   else closeModal();
 });
@@ -292,6 +331,18 @@ document.addEventListener("langchange", () => {  // re-localize dynamic bits
 });
 if (location.hash === "#settings") openModal();
 if (location.hash === "#library") openLibrary();
+
+// deep-link: ?cmp=<id1>,<id2> opens a version comparison directly (shareable)
+async function openCompareByIds(ids) {
+  try {
+    const data = await (await fetch("/api/library")).json();
+    const all = (data.groups || []).flatMap((g) => g.entries);
+    const a = all.find((m) => m.id === ids[0]), b = all.find((m) => m.id === ids[1]);
+    if (a && b) openCompare(a, b);
+  } catch {}
+}
+const _cmp = new URLSearchParams(location.search).get("cmp");
+if (_cmp && _cmp.includes(",")) openCompareByIds(_cmp.split(","));
 
 applyI18n();
 loadSettings();

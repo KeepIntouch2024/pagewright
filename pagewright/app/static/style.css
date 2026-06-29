@@ -278,3 +278,22 @@ input::placeholder,textarea::placeholder{color:var(--faint)}
 .lb-close{position:fixed;top:18px;right:22px;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;
   background:rgba(255,255,255,.12);color:#fff;backdrop-filter:blur(8px);transition:.15s}
 .lb-close:hover{background:rgba(255,255,255,.22)}
+
+/* selected-for-compare card */
+.lib-card.cmp-on{outline:2px solid var(--accent);outline-offset:1px}
+.lib-card.cmp-on .lib-btn:nth-child(3){border-color:var(--accent);color:var(--accent)}
+
+/* ───────── Version compare (side by side) ───────── */
+.cmp-host{position:fixed;inset:0;z-index:65;background:var(--bg);display:flex;flex-direction:column}
+.cmp-bar{flex:0 0 auto;display:flex;align-items:center;gap:16px;padding:14px 22px;border-bottom:1px solid var(--line);
+  background:rgba(255,255,255,.7);backdrop-filter:blur(14px)}
+.cmp-bar h3{font-size:16px;font-weight:700;margin-right:auto}
+.cmp-sync{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--ink-2);cursor:pointer;user-select:none}
+.cmp-sync input{width:15px;height:15px;accent-color:var(--accent)}
+.cmp-grid{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line)}
+.cmp-col{background:var(--surface-2);min-height:0;display:flex;flex-direction:column}
+.cmp-h{flex:0 0 auto;display:flex;align-items:baseline;gap:10px;padding:10px 16px;background:var(--surface);border-bottom:1px solid var(--line)}
+.cmp-h b{font:700 14px/1 var(--font)}
+.cmp-h span{font-size:11.5px;color:var(--muted)}
+.cmp-scroll{flex:1;overflow:auto;padding:20px;display:flex;justify-content:center}
+.cmp-scroll img{width:100%;max-width:380px;align-self:flex-start;border-radius:5px;box-shadow:var(--sh-2)}

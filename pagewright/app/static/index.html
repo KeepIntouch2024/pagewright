@@ -208,6 +208,18 @@
   </div>
 </div>
 
+<!-- version compare (side by side) -->
+<div id="compare" class="cmp-host hidden">
+  <div class="cmp-bar">
+    <h3 data-i18n="cmp.title">版本对比</h3>
+    <label class="cmp-sync"><input type="checkbox" id="cmpSync" checked><span data-i18n="cmp.sync">同步滚动</span></label>
+    <button class="icon-btn" data-cmp-close aria-label="close">
+      <svg viewBox="0 0 24 24" width="18" height="18"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <div id="cmpGrid" class="cmp-grid"></div>
+</div>
+
 <!-- lightbox -->
 <div id="lightbox" class="lightbox hidden">
   <button class="lb-close" data-lb-close aria-label="close">
